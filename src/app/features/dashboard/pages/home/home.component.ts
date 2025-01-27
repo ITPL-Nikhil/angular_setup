@@ -6,6 +6,7 @@ import {
   selectToken,
   selectUser,
 } from '../../../../state/selectors/auth.selectors';
+import { AppStoreState } from '../../../../types';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +17,10 @@ import {
 })
 export class HomeComponent implements OnInit {
   user$: Observable<unknown>;
-  token$: Observable<string>;
+  token$: Observable<unknown>;
 
-  constructor(private store: Store) {
-    // Select the user and token from the store
+  constructor(private store: Store<AppStoreState>) {
+    // Pass AppState to the Store
     this.user$ = this.store.pipe(select(selectUser)); // selectUser selector will extract user from the state
     this.token$ = this.store.pipe(select(selectToken)); // selectToken selector will extract the token
   }
@@ -31,13 +32,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.callApi();
-    // Perform any necessary initialization here
   }
 
   logoutUser(): void {
     // Dispatch logout action to reset the state
     this.store.dispatch(logout());
-
     // Optionally, clear the token from localStorage
     localStorage.removeItem('auth_token');
   }

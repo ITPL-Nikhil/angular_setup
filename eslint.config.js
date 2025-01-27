@@ -65,7 +65,6 @@ export default defineConfig([
     },
     rules: {
       ...commonRules,
-      '@typescript-eslint/no-unused-vars': 'warn',
       'no-implicit-globals': 'error',
     },
   },

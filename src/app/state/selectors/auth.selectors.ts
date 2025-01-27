@@ -1,9 +1,8 @@
 import { createSelector } from '@ngrx/store';
-import { AuthInitialState } from '../../types';
+import { AppStoreState, AuthInitialState } from '../../types';
 
 // Update the selector to use the typed state
-export const selectAuthState = (state: { auth: AuthInitialState }) =>
-  state.auth; // Access the auth state
+export const selectAuthState = (state: AppStoreState) => state.auth; // Access the auth state
 
 // Selector for the user
 export const selectUser = createSelector(

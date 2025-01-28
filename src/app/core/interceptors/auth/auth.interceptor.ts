@@ -1,5 +1,3 @@
-// auth.interceptor.ts (modified to handle 401 errors)
-
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -7,8 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError, from } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../../services';
 
 @Injectable()
@@ -19,23 +17,24 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const authToken = localStorage.getItem('authToken');
+    // Convert the Promise returned by getToken() to an Observable using 'from'
+    return from(this.authService.getToken()).pipe(
+      switchMap((authToken: string | null) => {
+        let clonedRequest = req;
 
-    let clonedRequest = req;
+        if (authToken && authToken !== '') {
+          clonedRequest = req.clone({
+            setHeaders: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+        }
 
-    if (authToken && authToken !== '') {
-      clonedRequest = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
-    }
-
-    return next.handle(clonedRequest).pipe(
+        return next.handle(clonedRequest); // Proceed with the HTTP request
+      }),
       catchError((error) => {
         if (error.status === 401) {
           // Redirect to login page if token is invalid or expired
-
           this.authService.logout();
         }
         return throwError(error); // Return the error for further handling

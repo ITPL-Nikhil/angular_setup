@@ -29,7 +29,7 @@ export class LoginComponent {
     const token = 'fake-jwt-token'; // Simulated token
     // Encrypt the data
     // Dispatch login action
-    this.store.dispatch(loginSuccess({ user: userDetails }));
+    this.store.dispatch(loginSuccess({ user: userDetails, token }));
     // Optionally, store the token in local storage
     this.authService.setToken(token);
     this.authService.setUserDetails(userDetails);

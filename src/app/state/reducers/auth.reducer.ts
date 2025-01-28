@@ -10,6 +10,7 @@ import {
 
 export const initialState: AuthInitialState = {
   user: null,
+  token: null,
   error: null,
   isLoading: true,
 };
@@ -20,9 +21,10 @@ export const authReducer = createReducer(
     ...state,
     isLoading: false, // Set isLoading to true when login starts
   })),
-  on(loginSuccess, (state, { user }) => ({
+  on(loginSuccess, (state, { user, token }) => ({
     ...state,
     user,
+    token,
     error: null,
     isLoading: false,
   })),

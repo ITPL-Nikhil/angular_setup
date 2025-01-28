@@ -5,7 +5,6 @@ export type UserDetailsType = {
 
 export type AuthInitialState = {
   user: UserDetailsType | null; // You can replace `any` with the actual type of user
-  token: string | null;
   error?: string | null;
   isLoading?: boolean;
 };

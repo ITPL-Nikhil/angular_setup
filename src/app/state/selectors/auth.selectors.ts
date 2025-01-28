@@ -11,12 +11,6 @@ export const selectUser = createSelector(
 );
 
 // Selector for the token
-export const selectToken = createSelector(
-  selectAuthState,
-  (authState: AuthInitialState) => authState?.token ?? null
-);
-
-// Selector for the token
 export const selectIsLoading = createSelector(
   selectAuthState,
   (authState: AuthInitialState) => authState?.isLoading ?? false

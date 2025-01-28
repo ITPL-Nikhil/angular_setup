@@ -24,7 +24,7 @@ export class EffectHandler {
       if (token) {
         const user: UserDetailsType | null =
           await this.authService.getUserDetails();
-        this.store.dispatch(loginSuccess({ token, user }));
+        this.store.dispatch(loginSuccess({ user }));
       } else {
         this.store.dispatch(loginFailure({ error: 'No token found' }));
       }

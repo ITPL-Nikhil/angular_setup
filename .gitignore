@@ -11,6 +11,14 @@
 npm-debug.log
 yarn-error.log
 
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+pnpm-workspace.yaml
+package-lock.json
+yarn.lock
+
+
+
 # IDEs and editors
 .idea/
 .project

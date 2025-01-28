@@ -21,7 +21,7 @@ import { EffectHandler } from './state/effects';
   ],
 })
 export class AppComponent implements OnInit {
-  title = 'first-app';
+  title = 'angular_setup';
   constructor(private effectHandler: EffectHandler) {}
 
   ngOnInit(): void {

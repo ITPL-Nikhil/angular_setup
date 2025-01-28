@@ -1,5 +1,5 @@
 {
-  "name": "first-app",
+  "name": "angular_setup",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:first-app": "node dist/first-app/server/server.mjs",
+    "serve:ssr:angular_setup": "node dist/angular_setup/server/server.mjs",
     "prepare": "husky install",
     "format": "prettier --write '**/*.{ts,tsx,css,json}'",
     "lint": "eslint ."

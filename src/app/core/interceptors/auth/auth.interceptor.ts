@@ -9,11 +9,11 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { AuthService } from '../../services';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   intercept(
     req: HttpRequest<unknown>,
@@ -35,7 +35,8 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (error.status === 401) {
           // Redirect to login page if token is invalid or expired
-          this.router.navigate(['/login']);
+
+          this.authService.logout();
         }
         return throwError(error); // Return the error for further handling
       })

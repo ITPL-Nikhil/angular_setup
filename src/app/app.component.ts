@@ -1,9 +1,10 @@
 // app.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router'; // Import RouterModule
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth/auth.interceptor';
 import { routes } from './app.routes';
+import { EffectHandler } from './state/effects';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,11 @@ import { routes } from './app.routes';
     },
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'first-app';
+  constructor(private effectHandler: EffectHandler) {}
+
+  ngOnInit(): void {
+    this.effectHandler.callAllInitialEffect();
+  }
 }

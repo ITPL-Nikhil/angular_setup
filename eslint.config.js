@@ -70,7 +70,6 @@ export default defineConfig([
   },
   {
     files: ['**/*.html'],
-    ignores: ['.angular/**'],
     languageOptions: {
       parser: templateParser, // Ensure this is being used for HTML files
       parserOptions: {
@@ -87,5 +86,5 @@ export default defineConfig([
       'prettier/prettier': 'off',
     },
   },
-  { ignores: ['.angular/**'] },
+  { ignores: ['.angular/**', '**/dist/**'] },
 ]);

@@ -1,11 +1,6 @@
 <ng-container *ngIf="!error; else errorTemplate">
-  <img
+  <div
     *ngIf="cachedImage"
-    [src]="cachedImage"
-    [alt]="alt"
-    [style]="styles"
-    [loading]="lazyLoading ? 'lazy' : 'eager'"
-    class="block max-w-full h-auto"
     [ngClass]="{
       'rounded-lg': borderRadius !== '0',
       'object-cover': objectFit === 'cover',
@@ -13,7 +8,15 @@
       'object-fill': objectFit === 'fill',
       'object-none': objectFit === 'none',
     }"
-  />
+  >
+    <img
+      [src]="cachedImage"
+      [alt]="alt"
+      [style]="styles"
+      [loading]="lazyLoading ? 'lazy' : 'eager'"
+      class="block max-w-full h-auto"
+    />
+  </div>
   <div
     *ngIf="isLoading"
     class="flex justify-center items-center bg-gray-100 text-gray-600"

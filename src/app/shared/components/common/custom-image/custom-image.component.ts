@@ -6,19 +6,17 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  BrowserModule,
-  DomSanitizer,
-  SafeUrl,
-} from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-custom-image',
   templateUrl: './custom-image.component.html',
   styleUrls: ['./custom-image.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush, // Optimize performance
-  imports: [CommonModule, BrowserModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true, // Mark as standalone
+  imports: [CommonModule, HttpClientModule], // Import HttpClientModule
 })
 export class CustomImageComponent implements OnInit {
   @Input() src: string = ''; // Image URL

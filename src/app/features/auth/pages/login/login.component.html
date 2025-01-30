@@ -1,36 +1,31 @@
-<!-- Example usage of Tailwind CSS in your login component -->
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-  <div class="w-full max-w-md p-8 bg-white shadow-md rounded-lg">
-    <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+  <div
+    class="w-full px-[2rem] py-9 text-[.9rem] sm:max-w-md sm:rounded-card-radius sm:px-9 sm:shadow-[15px_15px_20px_#ffffff_inset,15px_15px_20px_#cbd5e1] flex-col flex"
+  >
+    <span class="text-header-normal font-bold mb-6 text-center">Login</span>
     <form (ngSubmit)="loginUser()">
-      <label for="username">Username:</label>
-      <input
-        type="text"
-        placeholder="Username"
-        id="username"
+      <app-custom-input
         [(ngModel)]="username"
+        [title]="'Username'"
         name="username"
-        autocomplete="username"
-        required
-        class="w-full p-2 mb-4 border border-gray-300 rounded-md"
-      />
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        id="password"
+        type="text"
+        [inputClass]="'mb-2'"
+      ></app-custom-input>
+      <app-custom-input
         [(ngModel)]="password"
+        [title]="'Password'"
+        [icon]="'lock'"
         name="password"
-        required
-        placeholder="Password"
-        autocomplete="current-password"
-        class="w-full p-2 mb-4 border border-gray-300 rounded-md"
-      />
-      <button
-        type="submit"
-        class="w-full py-2 bg-blue-600 text-white rounded-md"
+        [inputType]="'password'"
+        [inputClass]="'mb-6'"
+      ></app-custom-input>
+      <app-custom-button
+        buttonText="Click Me"
+        iconColor="red"
+        buttonClass="btn-primary"
+        (buttonClick)="loginUser()"
       >
-        Login
-      </button>
+      </app-custom-button>
     </form>
   </div>
 </div>

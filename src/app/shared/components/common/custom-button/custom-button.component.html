@@ -1,1 +1,29 @@
-<p>custom-button works!</p>
+<button
+  [ngClass]="[
+    'flex items-center justify-center rounded-lg font-medium transition-all w-full',
+    disabled
+      ? 'bg-gray-400 cursor-not-allowed hover:bg-gray-400 '
+      : buttonColorClass,
+    buttonClass,
+  ]"
+  (click)="onClick()"
+  [disabled]="disabled"
+>
+  <ng-container *ngIf="icon && iconPosition === 'left'">
+    <mat-icon
+      class="mr-2 text-[iconColor] text-base"
+      [ngStyle]="{ color: iconColor }"
+    >
+      {{ icon }}
+    </mat-icon>
+  </ng-container>
+  <span class="text-[textColor]">{{ buttonText }}</span>
+  <ng-container *ngIf="icon && iconPosition === 'right'">
+    <mat-icon
+      class="ml-2 text-[iconColor] text-base"
+      [ngStyle]="{ color: iconColor }"
+    >
+      {{ icon }}
+    </mat-icon>
+  </ng-container>
+</button>

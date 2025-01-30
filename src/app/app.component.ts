@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router'; // Import RouterModule
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

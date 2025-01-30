@@ -1,0 +1,14 @@
+<div class="flex items-center space-x-2 w-full {{ titleClass }}">
+  <span class="font-medium text-gray-800">
+    {{ title }}
+    <span *ngIf="isMandatory" class="text-red-500">*</span>
+  </span>
+  <ng-container *ngIf="icon">
+    <mat-icon
+      class="cursor-pointer text-{{ iconColor }}"
+      (click)="onIconClick()"
+    >
+      {{ icon }}
+    </mat-icon>
+  </ng-container>
+</div>

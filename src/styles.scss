@@ -2,3 +2,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    html, body {
+      @apply text-content-text-normal;
+    }
+  }
+  
+@layer components {
+    .input-field {
+      @apply px-4 py-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-1 focus:ring-blue-500;
+    }
+  
+    .btn-primary {
+      @apply bg-blue-500 text-white font-bold px-6 py-3 rounded-md hover:bg-blue-600 transition ease-in-out;
+    }
+  
+    .card {
+      @apply bg-white shadow-lg rounded-lg p-6;
+    }
+  }
+  

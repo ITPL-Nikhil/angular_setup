@@ -51,7 +51,7 @@ export class DevToolsDetectionService {
   }
 
   private handleDevToolsOpened(): void {
-    this.logoutUser();
+    // this.logoutUser();
   }
 
   private async logoutUser(): Promise<void> {

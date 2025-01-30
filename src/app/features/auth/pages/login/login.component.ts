@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth/auth.service';
 import { AppStoreState } from '../../../../types';
+import { CustomInputComponent } from '../../../../shared/components/common/custom-input/custom-input.component';
+import { CustomButtonComponent } from '../../../../shared/components/common/custom-button/custom-button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [FormsModule],
+  imports: [FormsModule, CustomInputComponent, CustomButtonComponent],
 })
 export class LoginComponent {
   username: string = '';

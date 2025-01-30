@@ -1,1 +1,33 @@
-<p>custom-image works!</p>
+<ng-container *ngIf="!error; else errorTemplate">
+  <img
+    *ngIf="cachedImage"
+    [src]="cachedImage"
+    [alt]="alt"
+    [style]="styles"
+    [loading]="lazyLoading ? 'lazy' : 'eager'"
+    class="block max-w-full h-auto"
+    [ngClass]="{
+      'rounded-lg': borderRadius !== '0',
+      'object-cover': objectFit === 'cover',
+      'object-contain': objectFit === 'contain',
+      'object-fill': objectFit === 'fill',
+      'object-none': objectFit === 'none',
+    }"
+  />
+  <div
+    *ngIf="isLoading"
+    class="flex justify-center items-center bg-gray-100 text-gray-600"
+    [ngStyle]="{ width: width, height: height }"
+  >
+    Loading...
+  </div>
+</ng-container>
+
+<ng-template #errorTemplate>
+  <div
+    class="flex justify-center items-center bg-red-100 text-red-600"
+    [ngStyle]="{ width: width, height: height }"
+  >
+    Failed to load image.
+  </div>
+</ng-template>

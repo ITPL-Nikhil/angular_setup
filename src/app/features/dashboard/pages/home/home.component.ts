@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { selectUser } from '../../../../state/selectors/auth.selectors';
 import { AppStoreState } from '../../../../types';
 import { AuthService } from '../../../../core/services';
+import { CustomImageComponent } from '../../../../shared/components/common/custom-image/custom-image.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [], // No need to import anything except the Store service
+  imports: [CustomImageComponent], // No need to import anything except the Store service
 })
 export class HomeComponent implements OnInit {
   user$: Observable<unknown>;
